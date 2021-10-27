@@ -1,5 +1,6 @@
 ﻿using Hermes.ADO;
 using Hermes.APP;
+using Hermes.DAO;
 using Hermes.DTO.API;
 using System;
 using System.Collections.Generic;
@@ -56,8 +57,9 @@ namespace Hermes
                 
                 List<Order> a = new List<Order>();
                 a = LoadOrdersDAO.LoadOrders();
+                
+                SendOrder.SendTracking(a);
 
-                RequestRest.SendTracking(a);
 
 
                 RequestTracking.RequestTrackingSS();

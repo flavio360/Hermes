@@ -65,8 +65,9 @@
     <Compile Include="DAO\API\RequestRest.cs" />
     <Compile Include="DAO\API\Order.cs" />
     <Compile Include="DAO\API\OrderResponse.cs" />
-    <Compile Include="DAO\API\LoadOrdersDAO.cs" />
+    <Compile Include="DAO\LoadOrdersDAO.cs" />
     <Compile Include="DAO\API\Authentication.cs" />
+    <Compile Include="DAO\SendOrder.cs" />
     <Compile Include="DAO\Tracking.cs" />
     <Compile Include="DAO\RecordLog.cs" />
     <Compile Include="DAO\RecordTrackSendedDAO.cs" />

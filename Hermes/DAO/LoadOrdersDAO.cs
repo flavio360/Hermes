@@ -95,7 +95,7 @@ namespace Hermes.DTO.API
             }
             catch (Exception ex)
             {
-                RecordLog.RecordLogSended(ex.ToString());
+                RecordLog.ErrorLogRecording(ex.ToString());
             }   
             
              return objsOrders ;

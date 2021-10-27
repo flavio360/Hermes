@@ -1186,11 +1186,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\Hermes\\Hermes\\Hermes.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\Hermes.csproj",
       "projectName": "Hermes",
-      "projectPath": "C:\\Users\\Administrator\\source\\repos\\Hermes\\Hermes\\Hermes.csproj",
+      "projectPath": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\Hermes.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\source\\repos\\Hermes\\Hermes\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [

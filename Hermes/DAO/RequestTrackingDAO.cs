@@ -54,7 +54,7 @@ namespace Hermes.APP
             }
             catch (System.Exception ex)
             {             
-                RecordLog.RecordLogSended(ex.ToString());
+                RecordLog.ErrorLogRecording(ex.ToString());
             }            
         }
     }
