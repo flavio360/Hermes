@@ -1186,9 +1186,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\Hermes.csproj",
-      "projectName": "Hermes",
-      "projectPath": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\Hermes.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\HermesService.csproj",
+      "projectName": "HermesService",
+      "projectPath": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\HermesService.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Administrator\\Documents\\REPOSITORY\\Hermes\\Hermes\\obj\\",
       "projectStyle": "PackageReference",

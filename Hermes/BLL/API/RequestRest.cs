@@ -18,7 +18,9 @@ namespace Hermes.DTO.API
     {
         
         private static string urlBase = @"https://www.sicloweb.com.br/api/v1/delivery/add";
-        private static string token = "3806734b256c27e41ec2c6bffa26d9e";
+        private static string token = "3806734b256c27e41ec2c6bffa26d9e7";
+        private RestClient cliente;
+        private RestRequest requisicao;
 
         #region agrupa
         //public RequestRest(string urlBase)
@@ -88,11 +90,11 @@ namespace Hermes.DTO.API
             request.AddParameter("token", token);
             request.AddParameter("destinatario", body.Destinatario);
             request.AddParameter("pedido", body.Pedido);
-            request.AddParameter("ceporigem", body.Ceporigem);
+            request.AddParameter("ceporigem", body.Ceporigem.Replace("-","").Replace(" ","").PadLeft(8,'0'));
             request.AddParameter("endereco", body.Endereco);
             request.AddParameter("numero", body.Numero);
             request.AddParameter("complemento",body.Complemento);
-            request.AddParameter("bairro",body.Bairro);
+            request.AddParameter("bairro",body.Bairro == string.Empty? "_": body.Bairro);
             request.AddParameter("cidade", body.Cidade);
             request.AddParameter("celular", body.Celular);
             request.AddParameter("cep", body.Cep);

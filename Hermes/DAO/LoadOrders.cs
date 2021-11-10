@@ -13,29 +13,28 @@ using System.ComponentModel;
 
 namespace Hermes.DTO.API
 {
-    public class LoadOrdersDAO
+    public static class LoadOrders
     {
-        private static string token = "3806734b256c27e41ec2c6bffa26d9e7";
 
-
-        public static List<Order> LoadOrders() 
+        public static List<Order> LoadOrdersSend() 
         {
             List<Order> objsOrders = new List<Order>();
-            
-            var query = "SELECT TOP 2 " +
+            var dataCorte = "'2021-11-12'";
+            var query = "SELECT " +
                         "	A.Codigo as Pedido,A.DestNombre AS Destinatario,A.DestAddress AS Endereco,A.DestComplemento AS Complemento,DestTelephone AS Telefone, A.DestCep AS Cep,C.Name AS UF, " +
                         "	D.[Description] AS Cidade,A.RemCep AS Ceporigem, A.DestDocumento AS Cpf_cnpj, A.DestEmail AS Email, A.Incoterm AS Incoterms, A.TotalPackageQuantity AS Quantidade,A.TotalWeight AS Peso, " +
                         "	a.CommercialValueTotal AS Vlrentrega " +
                         "FROM " +
                         "	HarpiaHouse A " +
                         "LEFT JOIN " +
-                        "	CheckpointSended B ON A.Codigo = B.HarpiaCodigo " +
+                        "	OrderSended B ON A.Codigo = B.HarpiaCodigo " +
                         "LEFT JOIN " +
                         "	HarpiaState C ON A.DestEstado = C.Id " +
                         "LEFT JOIN " +
                         "	HarpiaMunicipality D ON A.DestMunicipio = D.Id " +
                         "WHERE " +
-                        "	B.Sended IS NULL " +
+                        "	B.HarpiaCodigo IS NULL AND " +
+                        "   A.CreatedDate >" + dataCorte + 
                         "ORDER BY " +
                         "	A.Codigo";
 
@@ -54,7 +53,7 @@ namespace Hermes.DTO.API
                     {
                         objsOrders.Add(new Order()
                         {
-                            Token = token,
+                            Token = string.Empty,
                             Destinatario = item.Destinatario,
                             Endereco = item.Endereco,
                             Numero = string.Empty,
@@ -96,9 +95,32 @@ namespace Hermes.DTO.API
             catch (Exception ex)
             {
                 RecordLog.ErrorLogRecording(ex.ToString());
-            }   
-            
+            }  
              return objsOrders ;
+        }
+
+        public static void RecordSendedOrder(string order)
+        {
+            try
+            {
+                var dataEnvio = DateTime.UtcNow.AddHours(-3).ToString("yyyy-MM-dd HH:mm:ss");
+                
+
+                var query = "insert into OrderSended values(@HarpiaCodigo,@DataEnvio)";
+                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))
+                {
+                    db.Open();
+
+                    db.Execute(query, new { HarpiaCodigo = order , DataEnvio = dataEnvio });
+
+                    db.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

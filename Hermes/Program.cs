@@ -35,7 +35,7 @@ namespace Hermes
 
           {
 
-              new Service1()
+              new Hermes()
 
           };
 
@@ -49,20 +49,20 @@ namespace Hermes
 
                 // Depois de debugar basta compilar em Release e instalar para funcionar normalmente.
 
-                //Hermes service = new Hermes();
+                Hermes service = new Hermes();
 
                 // Chamada do seu método para Debug.
-
+                service.inicioServico();
                 //service.RequestTrackingSS();
+                //Teste.DARF.GetSolicitacaoDarfByManifesto("UCI202100059585");
                 
-                List<Order> a = new List<Order>();
-                a = LoadOrdersDAO.LoadOrders();
+                //List<Order> a = new List<Order>();
+
+                //a = LoadOrders.LoadOrdersSend();
                 
-                SendOrder.SendTracking(a);
+                //SendOrder.SendOrders(a);
 
-
-
-                RequestTracking.RequestTrackingSS();
+                //RequestTracking.RequestTrackingSS();
 
             // Coloque sempre um breakpoint para o ponto de parada do seu código.
 

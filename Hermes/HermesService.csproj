@@ -62,14 +62,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAO\API\RequestRest.cs" />
-    <Compile Include="DAO\API\Order.cs" />
-    <Compile Include="DAO\API\OrderResponse.cs" />
-    <Compile Include="DAO\LoadOrdersDAO.cs" />
-    <Compile Include="DAO\API\Authentication.cs" />
-    <Compile Include="DAO\SendOrder.cs" />
+    <Compile Include="BLL\API\RequestRest.cs" />
+    <Compile Include="BLL\API\Order.cs" />
+    <Compile Include="BLL\API\OrderResponse.cs" />
+    <Compile Include="BLL\SendTracking.cs" />
+    <Compile Include="DAO\LoadOrders.cs" />
+    <Compile Include="BLL\API\Authentication.cs" />
+    <Compile Include="BLL\SendOrder.cs" />
+    <Compile Include="DAO\RecordOrderSended.cs" />
     <Compile Include="DAO\Tracking.cs" />
-    <Compile Include="DAO\RecordLog.cs" />
+    <Compile Include="BLL\RecordLog.cs" />
     <Compile Include="DAO\RecordTrackSendedDAO.cs" />
     <Compile Include="DAO\RequestTrackingDAO.cs" />
     <Compile Include="Hermes.cs">
@@ -86,6 +88,8 @@
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Testes\DARF.cs" />
+    <Compile Include="Testes\SolicitaDARF.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
