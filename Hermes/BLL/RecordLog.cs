@@ -62,12 +62,11 @@ namespace Hermes.APP
         public static void LogPOST(OrderResponse order, string pedido = null)
         {
             try
-            {
-                
+            {                
                 string pathFile = @"C:\LogHermes\Service_Post_API\" + DateTime.Now.ToString("yyyyMMdd");
                 System.IO.Directory.CreateDirectory(pathFile);
                
-                pathFile = pathFile + @"\LOG_POST_" + DateTime.Now.ToString("yyyyMMddT_hh")+ ".txt";                
+                pathFile = pathFile + @"\LOG_POST_" + DateTime.Now.ToString("yyyyMMdd")+ ".txt";                
 
                 if (!File.Exists(pathFile))
                 {

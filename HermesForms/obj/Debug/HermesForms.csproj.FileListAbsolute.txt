@@ -1,0 +1,10 @@
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\bin\Debug\HermesForms.exe.config
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\bin\Debug\HermesForms.exe
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\bin\Debug\HermesForms.pdb
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\obj\Debug\HermesForms.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\obj\Debug\HermesForms.frmMonitorEnvioDARF.resources
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\obj\Debug\HermesForms.Properties.Resources.resources
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\obj\Debug\HermesForms.csproj.GenerateResource.cache
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\obj\Debug\HermesForms.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\obj\Debug\HermesForms.exe
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\HermesForms\obj\Debug\HermesForms.pdb

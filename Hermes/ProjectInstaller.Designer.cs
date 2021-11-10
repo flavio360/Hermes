@@ -39,8 +39,8 @@
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.Description = "Envio Status Tracking AirLink x Interlog";
-            this.serviceInstaller1.DisplayName = "Hermes ";
+            this.serviceInstaller1.Description = "Envio Dados SSmanager x Interlog";
+            this.serviceInstaller1.DisplayName = "Hermes";
             this.serviceInstaller1.ServiceName = "Hermes";
             this.serviceInstaller1.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
