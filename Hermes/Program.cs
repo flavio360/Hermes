@@ -52,7 +52,7 @@ namespace Hermes
                 Hermes service = new Hermes();
 
                 // Chamada do seu método para Debug.
-                service.inicioServico();
+                bool ret = service.VerificarHoraExecucao();
                 //service.RequestTrackingSS();
                 //Teste.DARF.GetSolicitacaoDarfByManifesto("UCI202100059585");
                 

@@ -14,6 +14,7 @@ C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Text.
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Text.Json.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.ValueTuple.dll
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\HermesService.csprojAssemblyReference.cache
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\Hermes.exe.config
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\Hermes.Hermes.resources
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\Hermes.ProjectInstaller.resources

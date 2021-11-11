@@ -19,20 +19,16 @@ namespace Hermes.DAO
                 RequestRest postOrder = new RequestRest();
 
                 foreach (dynamic item in order)
-                {                    
+                {  
                     OrderResponse orderResponse = postOrder.PostFormData(item);
-                        
+                     
                     RecordLog.LogPOST(orderResponse, item.Pedido);
 
                     if (orderResponse.Error.Code=="200")
                     {
                         LoadOrders.RecordSendedOrder(item.Pedido);
                     }
-                }
-                //if (tracking.Count>0)
-                //{
-                //    LoadOrders.RecordSendedOrder(tracking);
-                //}                
+                }               
             }
             catch (System.Exception ex)
             {
