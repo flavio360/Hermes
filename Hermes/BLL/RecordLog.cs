@@ -85,7 +85,32 @@ namespace Hermes.APP
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
+            }
+        }
+
+        public void HermesLogService(string totalEnviado=null, string date=null, string comportamentoServico=null)
+        {
+            //grava quando o serviço incia, para ou um ciclo de execução.
+            if (date!= string.Empty && comportamentoServico!=string.Empty)
+            {
+                string pathFile = @"C:\LogHermes\Service_Status_Exec\" + DateTime.Now.ToString("yyyyMMdd");
+                System.IO.Directory.CreateDirectory(pathFile);
+
+                pathFile = pathFile + DateTime.Now.ToString("yyyy-MM-ddTHH:mm") + ".txt";
+
+                if (!File.Exists(pathFile))
+                {
+                    StreamWriter st = File.AppendText(pathFile);
+
+                    st.Write("####  HERMES - Log do Status de execução do serviço ##### " + DateTime.Now.ToString("dd MMMM yyyy") + "\n");
+                    st.Close();
+                }
+
+                StreamWriter s = File.AppendText(pathFile);                
+
+                s.WriteLine("Registro da Hora de execução foi em "+ date +", o status do serviço: "+ comportamentoServico);
+                s.Close();
             }
         }
     }
