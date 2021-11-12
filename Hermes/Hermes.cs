@@ -27,29 +27,44 @@ namespace Hermes
         {            
             InitializeComponent();
         }
-
+        
         protected override void OnStart(string[] args)
         {
             //valida a hora de execução do serviço. 
-            bool exec = VerificarHoraExecucao();
-
-            if (!exec)
+            while (true)
             {
-                RecordLog log = new RecordLog();
+                bool exec = VerificarHoraExecucao();
+                try
+                {
+                    if (exec==true)
+                    {
+                        RecordLog log = new RecordLog();
 
-                var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
-                var statusExec = "ciclo EXECUTADO";
+                        var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
+                        var statusExec = "ciclo EXECUTADO";
 
-                //Grava o ciclo de execução
-                log.HermesLogService(string.Empty, date, statusExec);
+                        EventLog.WriteEntry(statusExec, EventLogEntryType.Information);
 
-                //serviço de envio dos pedidos irlink para Interlog
-                InicioServico();
+                        //Grava o ciclo de execução
+                        log.HermesLogService(string.Empty, date, statusExec);
 
-                timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
-                timer.Interval = 5000; //number in milisecinds  
-                timer.Enabled = true;
+                        //serviço de envio dos pedidos irlink para Interlog
+                        InicioServico();
+
+                        timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
+                        timer.Interval = 5000; //number in milisecinds  
+                        timer.Enabled = true;
+                        exec = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
             }
+            
+            
         }
         protected override void OnStop()
         {
@@ -73,8 +88,6 @@ namespace Hermes
             }
             else
             {
-                RecordLog log = new RecordLog();
-                log.HermesLogService();
                 return;
             }        
         }
@@ -83,27 +96,35 @@ namespace Hermes
         {
             bool exec = false;
 
-                var T_exec = DateTime.Now.AddHours(-3).Hour.ToString();
-                if (T_exec == "6"|| T_exec == "12"|| T_exec == "18"|| T_exec == "00")
+                //var t_exec = DateTime.Now.AddHours(-3).Hour.ToString();
+                var t_exec = DateTime.Now.AddHours(-3).ToString("HH:mm");
+
+                if (t_exec == "06:30"|| t_exec == "12:30"|| t_exec == "18:30"|| t_exec == "00:30")
                 {
-                    exec = true; ;
+                    exec = true; 
                 }
                 else
                 {
+
                 RecordLog log = new RecordLog();
                 var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
                 var statusExec = "ciclo NÃO EXECUTADO";
                 
                 //Grava o ciclo de execução
                 log.HermesLogService(string.Empty, date, statusExec);
-                //Thread.Sleep(3600000);
-                Thread.Sleep(30000);
+                
+                //tempo que a Thead fica pausada até a próxima execução.
+                int minutosSleep = 59;
+                Thread.Sleep(minutosSleep * 60 * 1000);
                 }
 
             return exec;
         }
 
-
+        public void StartDebug(string[] args)
+        {
+            OnStart(args);
+        }
 
     }
 }

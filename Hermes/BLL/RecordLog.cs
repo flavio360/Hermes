@@ -13,45 +13,36 @@ namespace Hermes.APP
         {
             try
             {
-                string pathFile = @"C:\LogHermes\" + DateTime.Now.ToString("yyyyMMdd");
-                System.IO.Directory.CreateDirectory(pathFile);
-                pathFile = pathFile + @"\Recorded_objects_" + DateTime.Now.ToString("yyyyMMddT_hhmm") + ".txt";
-                File.Create(pathFile).Close();
-
-                StreamWriter writer = new StreamWriter(pathFile);
-                writer.Write("HERMES - Trackings Log Sended, Airlink X Interlog/n");
-                writer.WriteLine("Started process at " + DateTime.Now.ToString());               
-
                 foreach (var item in tracking)
                 {
-                    writer.WriteLine("Codigo:..." + item.Codigo+"...........Status Code:..."+item.Code + "...........Data do registro:..."+item.Created);
-                }
+                    StreamWriter lObjEscreveTexto = new StreamWriter(@"C:\LogHermes\Service_Status_Exec\ERROR_in_Recorded_objects_" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt", true);
+                    var dataAtual = DateTime.Now.ToString("yyyyMMdd T HH:mm");
 
-                writer.WriteLine("Process completed at " + DateTime.Now.ToString());
-                writer.Close();
+                    lObjEscreveTexto.WriteLine(string.Concat("Codigo:..." + item.Codigo + "...........Status Code:..." + item.Code + "...........Data do registro:..." + item.Created, Environment.NewLine));
+
+                    lObjEscreveTexto.Flush();
+                    lObjEscreveTexto.Close();
+                    lObjEscreveTexto.Dispose();
+                }
             }
             catch (Exception ex)
             {
                 ErrorLogRecording(ex.ToString());
-            }
-        
+            }        
         }
 
         public static void ErrorLogRecording(string msg, string code=null, string pedido=null)
         {
             try
             {
-                string pathFile = @"C:\LogHermes\" + DateTime.Now.ToString("yyyyMMdd");
-                System.IO.Directory.CreateDirectory(pathFile);
-                pathFile = pathFile + @"\ERROR_in_Recorded_objects_" + DateTime.Now.ToString("yyyyMMddT_hhmm") +"_Order_"+ pedido + ".txt";
-                File.Create(pathFile).Close();
+                StreamWriter lObjEscreveTexto = new StreamWriter(@"C:\LogHermes\Service_Status_Exec\ERROR_in_Recorded_objects_" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt", true);
+                var dataAtual = DateTime.Now.ToString("yyyyMMdd T HH:mm");
 
-                StreamWriter writer = new StreamWriter(pathFile);
+                lObjEscreveTexto.WriteLine(string.Concat( "Erro na gravação do pedido "+ pedido, "Observação: " + msg, " | " + code, Environment.NewLine));
 
-                writer.Write("HERMES - Trackings Log ERROR/n");
-                writer.WriteLine("Started process at " + DateTime.Now.ToString());
-                writer.WriteLine("/nERROR caused by "+ msg);
-                writer.Close();
+                lObjEscreveTexto.Flush();
+                lObjEscreveTexto.Close();
+                lObjEscreveTexto.Dispose();
             }
             catch (Exception)
             {
@@ -59,29 +50,22 @@ namespace Hermes.APP
             }
         }
 
-        public static void LogPOST(OrderResponse order, string pedido = null)
+        public static void LogPOST(OrderResponse order, string pedido = null, string statusCode=null )
         {
             try
-            {                
-                string pathFile = @"C:\LogHermes\Service_Post_API\" + DateTime.Now.ToString("yyyyMMdd");
-                System.IO.Directory.CreateDirectory(pathFile);
-               
-                pathFile = pathFile + @"\LOG_POST_" + DateTime.Now.ToString("yyyyMMdd")+ ".txt";                
+            {
+                string dataAtual = DateTime.Now.ToString("yyyyMMdd");
 
-                if (!File.Exists(pathFile))
-                {
-                    StreamWriter st = File.AppendText(pathFile);
+                StreamWriter lObjEscreveTexto = new StreamWriter(@"C:\LogHermes\Service_Post_API\Communication_LOG_"+ dataAtual+".txt", true);
 
-                    st.Write("####  HERMES - Post API Interlog #####"+ DateTime.Now.ToString("dd MMMM yyyy")+ "\n");
-                    st.Close();
-                }
+                var situation = order.Status == "success" ? "Success | Delivery Code: " + order.Delivery : "Fail= " + order.Error.Message.ToString();
+                situation = statusCode != "500" ? situation : " Internal server error ";
 
-                 StreamWriter s = File.AppendText(pathFile);
+                lObjEscreveTexto.WriteLine(string.Concat( "Postagem do pedido "+ pedido + "com status: "+ situation, ", status code: "+ statusCode, Environment.NewLine));
 
-                 var situation = order.Status == "200" ? "Success | Delivery Code: " + order.Delivery : "Fail= " + order.Error.Message.ToString();
-
-                 s.WriteLine("Status: " + situation+"| Order: " + pedido + "| Process executed at : " + DateTime.Now.ToString("yyyyMMddT_hhmm"));
-                 s.Close();
+                lObjEscreveTexto.Flush();
+                lObjEscreveTexto.Close();
+                lObjEscreveTexto.Dispose();                 
             }
             catch (Exception ex)
             {
@@ -91,27 +75,45 @@ namespace Hermes.APP
 
         public void HermesLogService(string totalEnviado=null, string date=null, string comportamentoServico=null)
         {
-            //grava quando o serviço incia, para ou um ciclo de execução.
-            if (date!= string.Empty && comportamentoServico!=string.Empty)
+            try
             {
-                string pathFile = @"C:\LogHermes\Service_Status_Exec\" + DateTime.Now.ToString("yyyyMMdd");
-                System.IO.Directory.CreateDirectory(pathFile);
-
-                pathFile = pathFile + DateTime.Now.ToString("yyyy-MM-ddTHH:mm") + ".txt";
-
-                if (!File.Exists(pathFile))
+                //grava quando o serviço incia, para ou um ciclo de execução.
+                if (date != string.Empty && comportamentoServico != string.Empty)
                 {
-                    StreamWriter st = File.AppendText(pathFile);
+                    StreamWriter lObjEscreveTexto = new StreamWriter(@"C:\LogHermes\Log_Servico_"+DateTime.Now.ToString("yyyy-MM-dd")+".txt", true);
 
-                    st.Write("####  HERMES - Log do Status de execução do serviço ##### " + DateTime.Now.ToString("dd MMMM yyyy") + "\n");
-                    st.Close();
+
+                    lObjEscreveTexto.WriteLine(string.Concat(date, " - ", comportamentoServico, Environment.NewLine));
+
+                    lObjEscreveTexto.Flush();
+                    lObjEscreveTexto.Close();
+                    lObjEscreveTexto.Dispose();
+                    #region original
+                    //string pathFile = @"C:\LogHermes\Service_Status_Exec\" + DateTime.Now.ToString("yyyyMMdd");
+                    //System.IO.Directory.CreateDirectory(pathFile);
+
+                    //pathFile = pathFile + "\\" + DateTime.Now.ToString("yyyyMMddTHHmm") + ".txt";
+
+                    //if (!File.Exists(pathFile))
+                    //{
+                    //    StreamWriter st = File.AppendText(pathFile);
+
+                    //    st.Write("####  HERMES - Log do Status de execução do serviço ##### " + DateTime.Now.ToString("ddMMMMyyyy") + "\n");
+                    //    st.Close();
+                    //}
+
+                    //StreamWriter s = File.AppendText(pathFile);
+
+                    //s.WriteLine("Registro da Hora de execução foi em " + date + ", o status do serviço: " + comportamentoServico);
+                    //s.Close();
+                    #endregion
                 }
-
-                StreamWriter s = File.AppendText(pathFile);                
-
-                s.WriteLine("Registro da Hora de execução foi em "+ date +", o status do serviço: "+ comportamentoServico);
-                s.Close();
             }
+            catch (Exception ex )
+            {
+                throw ex;
+            }
+            
         }
     }
 }

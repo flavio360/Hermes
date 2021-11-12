@@ -11,7 +11,7 @@ namespace Hermes.DAO
 {
     public class SendOrder
     {
-        public static  List<Order> SendOrders(List<Order> order)
+        public static   List<Order> SendOrders(List<Order> order)
         {
             try
             {
@@ -20,19 +20,24 @@ namespace Hermes.DAO
 
                 foreach (dynamic item in order)
                 {  
-                    OrderResponse orderResponse = postOrder.PostFormData(item);
-                     
-                    RecordLog.LogPOST(orderResponse, item.Pedido);
+                    //Envia pedido para Interlog
+                    OrderResponse orderResponse = postOrder.PostFormData(item);          
 
                     if (orderResponse.Error.Code=="200")
                     {
-                        LoadOrders.RecordSendedOrder(item.Pedido);
+                        //Grava na base o pedido que foi enviado para a Interlog
+                        LoadOrders.RecordSendedOrder(item.Pedido,orderResponse.Delivery);
                     }
+
+                    var codigoRet = RequestRest.statusCode;
+                    var testeasdadas = orderResponse.Error.Message;
+                    //grava Log do response da API Interlog
+                    RecordLog.LogPOST(orderResponse, item.Pedido, codigoRet);
                 }               
             }
             catch (System.Exception ex)
             {
-                RecordLog.ErrorLogRecording(ex.ToString());
+                RecordLog.ErrorLogRecording(ex.ToString(),string.Empty, string.Empty);
             }
             return null;
         }

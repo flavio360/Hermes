@@ -1,0 +1,13 @@
+﻿Installing assembly 'C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.InstallLog
+   assemblypath = C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.exe
+Installing service Hermes...
+Service Hermes has been successfully installed.
+Creating EventLog source Hermes in log Application...
+Committing assembly 'C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.exe'.
+Affected parameters are:
+   logtoconsole = 
+   logfile = C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.InstallLog
+   assemblypath = C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.exe

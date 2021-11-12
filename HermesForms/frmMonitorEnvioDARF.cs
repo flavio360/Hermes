@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hermes.APP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,17 @@ namespace HermesForms
         public frmMonitorEnvioDARF()
         {
             InitializeComponent();
+        }
+
+        private void btnIniciarServico_Click(object sender, EventArgs e)
+        {
+            if (btnIniciarServico.Text == "Iniciar serviço")
+            {
+                btnIniciarServico.BackColor = Color.Green;
+                btnIniciarServico.Text = "Parar serviço";
+                RecordLog a = new RecordLog();
+                a.HermesLogService(string.Empty,"20211111","teste");
+            }
         }
     }
 }
