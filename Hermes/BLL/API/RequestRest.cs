@@ -16,7 +16,7 @@ namespace Hermes.DTO.API
 {
     public class RequestRest
     {
-        
+        public static string statusCode;
         private static string urlBase = @"https://www.sicloweb.com.br/api/v1/delivery/add";
         private static string token = "3806734b256c27e41ec2c6bffa26d9e7";
         private RestClient cliente;
@@ -82,6 +82,10 @@ namespace Hermes.DTO.API
 
         public OrderResponse PostFormData( Order body)
         {
+
+            OrderResponse objretorno;
+
+
             var client = new RestClient(urlBase);
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
@@ -122,10 +126,23 @@ namespace Hermes.DTO.API
             request.AddParameter("MAWB", body.MAWB);
             request.AddParameter("CodNCM", body.CodNCM);
             request.AddParameter("Incoterms", body.Incoterms);
-            
-            IRestResponse response = client.Execute(request);
 
-            return JsonConvert.DeserializeObject<OrderResponse>(response.Content);            
-        }        
+            try
+            {
+                IRestResponse response = client.Execute(request);
+
+                objretorno = JsonConvert.DeserializeObject<OrderResponse>(response.Content);
+                statusCode = Convert.ToInt32(response.StatusCode).ToString();           
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }        
+
+            return objretorno;            
+        } 
+        
+
     }
 }
