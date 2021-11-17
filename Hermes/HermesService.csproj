@@ -63,13 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\API\RequestRest.cs" />
-    <Compile Include="BLL\API\Order.cs" />
-    <Compile Include="BLL\API\OrderResponse.cs" />
+    <Compile Include="BLL\API\Interlog\Order.cs" />
+    <Compile Include="BLL\API\Interlog\OrderResponse.cs" />
     <Compile Include="BLL\SendTracking.cs" />
     <Compile Include="DAO\LoadOrders.cs" />
-    <Compile Include="BLL\API\Authentication.cs" />
+    <Compile Include="BLL\API\Interlog\Authentication.cs" />
     <Compile Include="BLL\SendOrder.cs" />
-    <Compile Include="DAO\RecordOrderSended.cs" />
     <Compile Include="DAO\Tracking.cs" />
     <Compile Include="BLL\RecordLog.cs" />
     <Compile Include="DAO\RecordTrackSendedDAO.cs" />

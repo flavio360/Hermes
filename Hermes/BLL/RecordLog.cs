@@ -16,7 +16,7 @@ namespace Hermes.APP
                 foreach (var item in tracking)
                 {
                     StreamWriter lObjEscreveTexto = new StreamWriter(@"C:\LogHermes\Service_Status_Exec\ERROR_in_Recorded_objects_" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt", true);
-                    var dataAtual = DateTime.Now.ToString("yyyyMMdd T HH:mm");
+                    var dataAtual = DateTime.Now.ToString("yyyyMMddTHH:mm");
 
                     lObjEscreveTexto.WriteLine(string.Concat("Codigo:..." + item.Codigo + "...........Status Code:..." + item.Code + "...........Data do registro:..." + item.Created, Environment.NewLine));
 
@@ -25,6 +25,7 @@ namespace Hermes.APP
                     lObjEscreveTexto.Dispose();
                 }
             }
+
             catch (Exception ex)
             {
                 ErrorLogRecording(ex.ToString());
@@ -54,14 +55,22 @@ namespace Hermes.APP
         {
             try
             {
+                string situation;
                 string dataAtual = DateTime.Now.ToString("yyyyMMdd");
 
                 StreamWriter lObjEscreveTexto = new StreamWriter(@"C:\LogHermes\Service_Post_API\Communication_LOG_"+ dataAtual+".txt", true);
 
-                var situation = order.Status == "success" ? "Success | Delivery Code: " + order.Delivery : "Fail= " + order.Error.Message.ToString();
-                situation = statusCode != "500" ? situation : " Internal server error ";
+                if (RequestRest.statusCode == "200")
+                {
+                    situation = "Success | Delivery Code: " + order.Delivery + " Response code serve: " + RequestRest.statusCode;
+                }
+                else
+                {
+                    situation = "Fail | message returned server : " + RequestRest.msgRet + "|  Code response server : " + RequestRest.statusCode;
+                }
 
-                lObjEscreveTexto.WriteLine(string.Concat( "Postagem do pedido "+ pedido + "com status: "+ situation, ", status code: "+ statusCode, Environment.NewLine));
+
+                lObjEscreveTexto.WriteLine(string.Concat( "Postagem do pedido "+ pedido + ", com status: "+ situation, ", Hora Execução: "+ DateTime.Now.AddHours(-3).ToString("HH:mm"), Environment.NewLine));
 
                 lObjEscreveTexto.Flush();
                 lObjEscreveTexto.Close();
@@ -114,6 +123,17 @@ namespace Hermes.APP
                 throw ex;
             }
             
+        }
+
+
+        public static void RecordLogsGeneric(string stringLog, string path)
+        {
+            StreamWriter lObjEscreveTexto = new StreamWriter(path, true);
+            lObjEscreveTexto.WriteLine(string.Concat(stringLog, Environment.NewLine));
+
+            lObjEscreveTexto.Flush();
+            lObjEscreveTexto.Close();
+            lObjEscreveTexto.Dispose();
         }
     }
 }

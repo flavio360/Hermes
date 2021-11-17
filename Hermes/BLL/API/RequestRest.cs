@@ -17,6 +17,7 @@ namespace Hermes.DTO.API
     public class RequestRest
     {
         public static string statusCode;
+        public static string msgRet;
         private static string urlBase = @"https://www.sicloweb.com.br/api/v1/delivery/add";
         private static string token = "3806734b256c27e41ec2c6bffa26d9e7";
         private RestClient cliente;
@@ -132,8 +133,8 @@ namespace Hermes.DTO.API
                 IRestResponse response = client.Execute(request);
 
                 objretorno = JsonConvert.DeserializeObject<OrderResponse>(response.Content);
-                statusCode = Convert.ToInt32(response.StatusCode).ToString();           
-
+                statusCode = Convert.ToInt32(response.StatusCode).ToString();
+                msgRet = response.StatusDescription;
             }
             catch (Exception ex)
             {
