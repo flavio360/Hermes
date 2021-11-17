@@ -23,14 +23,14 @@ namespace Hermes.DAO
                     //Envia pedido para Interlog
                     OrderResponse orderResponse = postOrder.PostFormData(item);          
 
-                    if (orderResponse.Error.Code=="200")
+                    if (RequestRest.statusCode == "200")
                     {
                         //Grava na base o pedido que foi enviado para a Interlog
                         LoadOrders.RecordSendedOrder(item.Pedido,orderResponse.Delivery);
                     }
 
                     var codigoRet = RequestRest.statusCode;
-                    var testeasdadas = orderResponse.Error.Message;
+                   
                     //grava Log do response da API Interlog
                     RecordLog.LogPOST(orderResponse, item.Pedido, codigoRet);
                 }               

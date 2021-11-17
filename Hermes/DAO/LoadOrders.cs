@@ -18,8 +18,11 @@ namespace Hermes.DTO.API
 
         public static List<Order> LoadOrdersSend() 
         {
+
             List<Order> objsOrders = new List<Order>();
-            var dataCorte = "'2021-11-12'";
+            var dataCorte = "'2021-11-10'";
+
+
             var query = "SELECT " +
                         "	A.Codigo as Pedido,A.DestNombre AS Destinatario,A.DestAddress AS Endereco,A.DestComplemento AS Complemento,DestTelephone AS Telefone, A.DestCep AS Cep,C.Name AS UF, " +
                         "	D.[Description] AS Cidade,A.RemCep AS Ceporigem, A.DestDocumento AS Cpf_cnpj, A.DestEmail AS Email, A.Incoterm AS Incoterms, A.TotalPackageQuantity AS Quantidade,A.TotalWeight AS Peso, " +
@@ -99,19 +102,19 @@ namespace Hermes.DTO.API
              return objsOrders ;
         }
 
-        public static void RecordSendedOrder(string order)
+        public static void RecordSendedOrder(string order, string delivery)
         {
             try
             {
                 var dataEnvio = DateTime.UtcNow.AddHours(-3).ToString("yyyy-MM-dd HH:mm:ss");
                 
 
-                var query = "insert into OrderSended values(@HarpiaCodigo,@DataEnvio)";
+                var query = "insert into OrderSended values(@HarpiaCodigo,@DataEnvio,@Delivery)";
                 using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))
                 {
                     db.Open();
 
-                    db.Execute(query, new { HarpiaCodigo = order , DataEnvio = dataEnvio });
+                    db.Execute(query, new { HarpiaCodigo = order , DataEnvio = dataEnvio, Delivery = delivery });
 
                     db.Close();
                 }
