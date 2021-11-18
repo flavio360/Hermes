@@ -1,5 +1,4 @@
-﻿using Hermes.ADO;
-using Hermes.DTO.API;
+﻿using Hermes.DTO.API;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +8,7 @@ namespace Hermes.APP
 {
     public class RecordLog
     {
-        public static void RecordLogSended(List<Tracking> tracking)
+        public static void RecordLogSended(List<LoadTracking> tracking)
         {
             try
             {
