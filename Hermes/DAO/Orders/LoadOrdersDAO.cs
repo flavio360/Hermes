@@ -5,11 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hermes.DTO.API;
-using System.ComponentModel;
+
 
 namespace Hermes.DTO.API
 {
@@ -106,8 +102,7 @@ namespace Hermes.DTO.API
         {
             try
             {
-                var dataEnvio = DateTime.UtcNow.AddHours(-3).ToString("yyyy-MM-dd HH:mm:ss");
-                
+                var dataEnvio = DateTime.UtcNow.AddHours(-3).ToString("yyyy-MM-dd HH:mm:ss");                
 
                 var query = "insert into OrderSended values(@HarpiaCodigo,@DataEnvio,@Delivery)";
                 using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))

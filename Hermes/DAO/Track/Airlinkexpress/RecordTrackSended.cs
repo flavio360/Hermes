@@ -1,4 +1,4 @@
-﻿using Hermes.ADO;
+﻿using Hermes;
 using System;
 using System.Collections.Generic;
 using Dapper;
@@ -10,7 +10,7 @@ namespace Hermes.APP
 {
     public class RecordTrackSend
     {
-        public static void RecordTrackSendList(List<Tracking> list) 
+        public static void RecordTrackSendList(List<LoadTracking> list) 
         {
             //ALTERAR PARA UPDATE
             var query = "insert into CheckpointSended values (@IdHarpiaCodigo, @Code)"; 

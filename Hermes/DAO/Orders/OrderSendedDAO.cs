@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hermes.BLL
+namespace Hermes.DAO.Orders
 {
-    public class SendTracking
+    class OrderSendedDAO
     {
-        public static void SendTrackingStatus() 
-        { 
-        
-        }
     }
 }

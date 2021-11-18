@@ -1,5 +1,4 @@
-﻿using Hermes.ADO;
-using Hermes.APP;
+﻿using Hermes.APP;
 using Hermes.DTO.API;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ namespace Hermes.DAO
         {
             try
             {
-                List<Tracking> tracking = new List<Tracking>();
+                List<LoadTracking> tracking = new List<LoadTracking>();
                 RequestRest postOrder = new RequestRest();
 
                 foreach (dynamic item in order)
