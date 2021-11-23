@@ -54,5 +54,8 @@ namespace Hermes.DAO.Track.Airlinkexpress
 
         [Column("dtentrada")]
         public string Dtentrada { get; set; }
+
+        [Column("pedidoid")]
+        public string PedidoId { get; set; }
     }
 }
