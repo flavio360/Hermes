@@ -11,15 +11,15 @@ namespace Hermes.DAO.Track.AirLink
     public class PedidomestreDAO
     {
         #region Propriedades private
-        
+
         private static string connString = ConnString.ConnStringa;
 
-        private static string query= "insert into pedidomestre (clienteid, produtoid, tipo, documento, remrazaosocial, remendereco, remmunicipio,desrazaosocial, desendereco, desbairro, desmunicipio,  descep, descgc,desuf, dtentrada)values";
+        private static string query = "insert into pedidomestre (clienteid, produtoid, tipo, documento, remrazaosocial, remendereco, remmunicipio,desrazaosocial, desendereco, desbairro, desmunicipio,  descep, descgc,desuf, dtentrada)values";
         private static string querySe = "select pedidoid,documento from  pedidomestre where documento in (";
         #endregion
 
         public void InsertPedidomestre(List<LoadTracking> trackings)
-        {
+        {            
             List<Pedidomestre> objRecordDB = new List<Pedidomestre>();       
             try
             {
@@ -41,20 +41,22 @@ namespace Hermes.DAO.Track.AirLink
                         Desuf = item.DestEstado.Trim(),
                         Descgc = item.DestDocumento.Trim(),
                         Descep = item.DestCep.Replace("-", "").Trim(),
+                        Dtentrada = item.CreatedDate
                     });
-                }                
-
+                }
+                
                 //adiciona todos itens para o insert
                 foreach (var item in objRecordDB)
                 {
                     query = query + @"('" + item.Clienteid + "','" + item.Produtoid + "','" + item.Tipo + "','" + item.Documento + "','" + item.Remrazaosocial + "','" + item.Remendereco + "','" +
                          item.Remmunicipio + "','" + item.Desrazaosocial + "','" + item.Desendereco + "','" + item.Desbairro + "','" + item.Desmunicipio+ "','" +
-                         item.Descep + "','" + item.Descgc + "','" +  item.Desuf + "'," + "now()"+"),";
+                         item.Descep + "','" + item.Descgc + "','" +  item.Desuf + "'," + item.Dtentrada + "),";
                 }
 
                 //remove o ultimo caractere da string de insert
                 query = query.Remove(query.Length - 1);
 
+                //using (NpgsqlConnection pgsqlConnection = new NpgsqlConnection(connString))
                 using (NpgsqlConnection pgsqlConnection = new NpgsqlConnection(connString))
                 {
                     //Abra a conexão com o PgSQL                  
@@ -72,8 +74,6 @@ namespace Hermes.DAO.Track.AirLink
             {
                 throw ex;
             }
-
-
         }
 
         public List<Pedidomestre> SelectPedidomestre(List<LoadTracking> trackings=null, string code=null)
@@ -91,7 +91,7 @@ namespace Hermes.DAO.Track.AirLink
                 querySe = querySe.Remove(querySe.Length - 1);
                 querySe = querySe + ")";
 
-                NpgsqlConnection conn = new NpgsqlConnection(connString);
+                NpgsqlConnection conn = new NpgsqlConnection("Server=localhost;Port=5432;User Id=postgres;Password=adm#56@dba;Database=airlinkexpress");
 
                 conn.Open();
 
@@ -127,9 +127,7 @@ namespace Hermes.DAO.Track.AirLink
             catch (Exception ex)
             {
                 throw ex;
-            }
-            
-        }
-    
+            }            
+        }    
     }
 }

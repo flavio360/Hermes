@@ -1,17 +1,14 @@
-﻿using System;
+﻿using Hermes.APP;
+using Hermes.BLL.Utilidades;
+using Hermes.DAO;
+using Hermes.DTO.API;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.ServiceProcess;
-using System.Timers;
-using Hermes.APP;
-using Hermes.DTO.API;
-using Hermes.DAO;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Timer = System.Timers.Timer;
 using System.Threading;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace Hermes
 {
@@ -32,7 +29,7 @@ namespace Hermes
                 RecordLog log = new RecordLog();
                 bool exec = false;
 
-                exec = VerificarHoraExecucao();
+                exec = TrataString.VerificarHoraExecucao();
 
                 try
                 {                  
@@ -75,9 +72,7 @@ namespace Hermes
                 {
                     throw ex;
                 }
-            }
-            
-            
+            }  
         }
         protected override void OnStop()
         {
@@ -104,21 +99,6 @@ namespace Hermes
             {
                 return;
             }        
-        }
-
-        public bool VerificarHoraExecucao()
-        {
-            bool exec = false;
-
-                //var t_exec = DateTime.Now.AddHours(-3).Hour.ToString();
-                var t_exec = DateTime.Now.AddHours(-3).ToString("HH");
-
-                if (t_exec == "06"|| t_exec == "12"|| t_exec == "18"|| t_exec == "00" || t_exec == "08")
-                {
-                    exec = true; 
-                }
-
-            return exec;
         }
 
         public void StartDebug(string[] args)

@@ -25,7 +25,7 @@ namespace Hermes.DAO.SSManager
                 queryInsert = queryInsert.Remove(queryInsert.Length - 1);
 
 
-                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["HConnectionString"].ConnectionString))
+                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))
                 {
                     db.Open();
 
