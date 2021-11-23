@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hermes.DAO.SSManagerNew.Track;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,9 @@ namespace Hermes
         public string Codigo        { get; set; }
         public string Code          { get; set; }
         public string Created       { get; set; }
-        public string CodeDestino   {get; set; }
+        public string CodeDestino   { get; set; }
         public string RemAddress    { get; set; }
-        public string DestNombre { get; set; }
+        public string DestNombre    { get; set; }
+        public string CreatedDate   { get; set; }
     }
 }

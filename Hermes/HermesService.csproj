@@ -65,17 +65,24 @@
     <Compile Include="BLL\API\RequestRest.cs" />
     <Compile Include="BLL\API\Interlog\Order.cs" />
     <Compile Include="BLL\API\Interlog\OrderResponse.cs" />
-    <Compile Include="DAO\Orders\LoadOrdersDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\Orders\LoadOrdersDAO.cs" />
     <Compile Include="BLL\API\Interlog\Authentication.cs" />
     <Compile Include="BLL\SendOrders\SendOrder.cs" />
-    <Compile Include="DAO\Orders\OrderSendedDAO.cs" />
-    <Compile Include="DAO\Track\Airlinkexpress\AirlinkSelect.cs" />
-    <Compile Include="DAO\Track\Airlinkexpress\Pedidomestre.cs" />
-    <Compile Include="DAO\Track\Airlinkexpress\PedidomestreDAO.cs" />
-    <Compile Include="DAO\Track\Airlinkexpress\LoadTracking.cs" />
+    <Compile Include="DAO\SSManagerNew\Track\CheckpointSended.cs" />
+    <Compile Include="DAO\SSManagerNew\Track\CheckpointSendedDAO.cs" />
+    <Compile Include="DAO\Airlinkexpress\AirlinkSelect.cs" />
+    <Compile Include="DAO\Airlinkexpress\Checkpoint_airlink.cs" />
+    <Compile Include="DAO\Airlinkexpress\Checkpoint_airlinkDAO.cs" />
+    <Compile Include="DAO\Airlinkexpress\Pedidomestre.cs" />
+    <Compile Include="DAO\Airlinkexpress\PedidomestreDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\Track\CheckpointTrackingSended.cs" />
+    <Compile Include="DAO\SSManagerNew\Track\CheckpointTrackingSendedDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\Track\LoadTracking.cs" />
     <Compile Include="BLL\SendOrders\RecordLog.cs" />
-    <Compile Include="DAO\Track\Airlinkexpress\RecordTrackSended.cs" />
-    <Compile Include="DAO\Track\Airlinkexpress\LoadTrackingDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\Track\LoadTrackingDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\Track\SendTrack.cs" />
+    <Compile Include="DAO\Utilidades\ConnString.cs" />
+    <Compile Include="DAO\Utilidades\RemoveUltimoCaractere.cs" />
     <Compile Include="Hermes.cs">
       <SubType>Component</SubType>
     </Compile>
