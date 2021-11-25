@@ -32,7 +32,7 @@ namespace Hermes.DAO.Track.AirLink
                         Tipo = "1",
                         Documento = item.Codigo.Trim(),
                         Remrazaosocial = item.RemNombre.Trim(),
-                        Remendereco = item.RemAddress.Replace(","," ").Trim(),
+                        Remendereco = item.RemAddress.Replace(",", " ").Trim(),
                         Remmunicipio = "N/D",
                         Desrazaosocial = item.DestNombre.Trim(),
                         Desendereco = item.DestAddress.Replace(",", " ").Trim(),
@@ -41,8 +41,8 @@ namespace Hermes.DAO.Track.AirLink
                         Desuf = item.DestEstado.Trim(),
                         Descgc = item.DestDocumento.Trim(),
                         Descep = item.DestCep.Replace("-", "").Trim(),
-                        Dtentrada = item.CreatedDate
-                    });
+                        Dtentrada = Convert.ToDateTime(item.CreatedDate).ToString("yyyy-MM-dd HH:mm:ss") //"2018-08-29 18:26:24"
+                    }); ; ;
                 }
                 
                 //adiciona todos itens para o insert
@@ -50,7 +50,7 @@ namespace Hermes.DAO.Track.AirLink
                 {
                     query = query + @"('" + item.Clienteid + "','" + item.Produtoid + "','" + item.Tipo + "','" + item.Documento + "','" + item.Remrazaosocial + "','" + item.Remendereco + "','" +
                          item.Remmunicipio + "','" + item.Desrazaosocial + "','" + item.Desendereco + "','" + item.Desbairro + "','" + item.Desmunicipio+ "','" +
-                         item.Descep + "','" + item.Descgc + "','" +  item.Desuf + "'," + item.Dtentrada + "),";
+                         item.Descep + "','" + item.Descgc + "','" +  item.Desuf + "','" + item.Dtentrada + "'),";
                 }
 
                 //remove o ultimo caractere da string de insert

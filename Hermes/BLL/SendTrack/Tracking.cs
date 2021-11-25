@@ -17,13 +17,11 @@ namespace Hermes.BLL.SendTrack
 {
     public class Tracking
     {
-        private static int minutosSleep = 25;
+        private static int minutosSleep = 5;
         private static string pathLog = @"C:\LogHermes\EnvioTrack\";
         public static void TrackingAirlink()
         {
-            string fileName;
-            
-
+            string fileName; 
             Timer timer = new Timer();
             bool exec = false;
             string paramExec = "6|12|18|00";
@@ -50,7 +48,7 @@ namespace Hermes.BLL.SendTrack
                         if (objloaded.Count > 0)
                         {
                             fileName = "Enviados_";
-                            stringlog = "1- Total de " + objloaded.Count + " para envio, registro efetuado em: " + DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
+                            stringlog = "1- Total de " + objloaded.Count + " para envio, registro efetuado em : " + DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
                             log.RecordLog(stringlog, pathLog, fileName);
 
                             #region Valida pedidos carregados que já foram gravados na pedidomestre
