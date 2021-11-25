@@ -4,6 +4,7 @@ C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\Hermes.pdb
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\Dapper.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\Npgsql.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\RestSharp.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.Buffers.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.ComponentModel.Annotations.dll
@@ -12,11 +13,13 @@ C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.Num
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.Text.Encodings.Web.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.Text.Json.dll
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.Threading.Channels.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.Threading.Tasks.Extensions.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Release\System.ValueTuple.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Release\HermesService.csprojAssemblyReference.cache
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Release\Hermes.exe.config
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Release\Hermes.Hermes.resources
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Release\Hermes.HermesTrack.resources
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Release\Hermes.ProjectInstaller.resources
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Release\HermesService.csproj.GenerateResource.cache
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Release\HermesService.csproj.CoreCompileInputs.cache

@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using Npgsql;
 using Hermes.DAO.Utilidades;
 using Hermes.DAO.SSManagerNew.Track;
+using Hermes.BLL.Utilidades;
 
 namespace Hermes.DAO.Track.Airlinkexpress
 {
@@ -62,8 +63,7 @@ namespace Hermes.DAO.Track.Airlinkexpress
                 ultID++;
             }
 
-
-            queryInsert = RemoveUltimoCaractere.RemoveUltimoCaractereString(queryInsert);
+            queryInsert = TrataString.RemoveUltimoCaractereString(queryInsert);
 
 
             using (NpgsqlConnection pgsqlConnection = new NpgsqlConnection(connString))

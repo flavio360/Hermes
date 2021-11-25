@@ -7,6 +7,7 @@ using Npgsql;
 using System;
 using System.Data;
 using Hermes.DAO.SSManagerNew.Track;
+using Hermes.BLL.Utilidades;
 
 namespace Hermes.APP
 {
@@ -38,22 +39,13 @@ namespace Hermes.APP
             "left join CheckpointTrackingSended d on a.Id = d.CheckpointId " +
             "left join TypeCheckpoint e on a.Code = e.Code " +
             "left join  CheckpointDeXPara f on e.Id = f.CodeOrigin " +
-            "where d.CheckpointId is null and c.PedidoidAirLink is not null and b.Codigo is notnull   order by c.Id_pedido, f.CodeDestino ";
+            "where d.CheckpointId is null and c.PedidoidAirLink is not null and b.Codigo is not null order by c.Id_pedido, f.CodeDestino ";
         #endregion
 
 
         #region Carrega os pedidos pendentes para gravar na pedidomaster da airlink
         public List<LoadTracking> LoadTrackingSS()
-        {
-            queryTrack =
-            "select c.Id_pedido as CheckPointSended_Id, f.CodeDestino as CodeStaus ,a.HouseId, a.id as CheckpointId,a.Created,a.[Date],c.PedidoidAirLink " +
-            "from[Checkpoint] a left join HarpiaHouse b on a.HouseId = b.Id " +
-            "left join CheckpointSended c on b.Codigo = c.HarpiaCodigo " +
-            "left join CheckpointTrackingSended d on a.Id = d.CheckpointId " +
-            "left join TypeCheckpoint e on a.Code = e.Code " +
-            "left join  CheckpointDeXPara f on e.Id = f.CodeOrigin " +
-            "where d.CheckpointId is null and c.PedidoidAirLink is not null and b.Codigo is not null order by c.Id_pedido, f.CodeDestino ";
-
+        { 
             List<LoadTracking> objTrackings = new List<LoadTracking>();
             try
             {
@@ -90,8 +82,14 @@ namespace Hermes.APP
             }
             
             catch (System.Exception ex)
-            {             
-                //RecordLog.ErrorLogRecording(ex.ToString());
+            {
+                string pathLog = @"C:\LogHermes\EnvioTrack\";
+                string sFileName = "Erro na cosnulta do tracking";
+                string sDscEx = ex.Message.ToString() + "| Tentativa de execução em : " + DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
+
+                GenericLogRecord a = new GenericLogRecord();
+
+                a.RecordLog(sDscEx, pathLog, sFileName);
             }
 
             return objTrackings;

@@ -62,17 +62,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\API\Interlog\InterLogConfig.cs" />
     <Compile Include="BLL\API\RequestRest.cs" />
     <Compile Include="BLL\API\Interlog\Order.cs" />
     <Compile Include="BLL\API\Interlog\OrderResponse.cs" />
     <Compile Include="BLL\SendTrack\Tracking.cs" />
+    <Compile Include="BLL\ServiceControlExecutation.cs" />
     <Compile Include="BLL\Utilidades\GenericLogRecord.cs" />
     <Compile Include="BLL\Utilidades\TrataString.cs" />
     <Compile Include="DAO\SSManagerNew\Orders\LoadOrdersDAO.cs" />
     <Compile Include="BLL\API\Interlog\Authentication.cs" />
     <Compile Include="BLL\SendOrders\SendOrder.cs" />
-    <Compile Include="DAO\SSManagerNew\SettingsExecutionService.cs" />
-    <Compile Include="DAO\SSManagerNew\SettingsExecutionServiceDAO.cs" />
     <Compile Include="DAO\SSManagerNew\CheckpointSended.cs" />
     <Compile Include="DAO\SSManagerNew\CheckpointSendedDAO.cs" />
     <Compile Include="DAO\Airlinkexpress\AirlinkSelect.cs" />
@@ -87,7 +87,6 @@
     <Compile Include="DAO\SSManagerNew\LoadTrackingDAO.cs" />
     <Compile Include="DAO\SSManagerNew\SendTrack.cs" />
     <Compile Include="DAO\ConnString.cs" />
-    <Compile Include="BLL\Utilidades\RemoveUltimoCaractere.cs" />
     <Compile Include="Hermes.cs">
       <SubType>Component</SubType>
     </Compile>

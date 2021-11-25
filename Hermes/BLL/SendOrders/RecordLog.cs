@@ -65,7 +65,7 @@ namespace Hermes.APP
                 }
                 else
                 {
-                    situation = "Fail | message returned server : " + RequestRest.msgRet + "|  Code response server : " + RequestRest.statusCode;
+                    situation = "Fail | message returned server : " + order.Error.Message + "|  Code response server : " + RequestRest.statusCode;
                 }
 
 
@@ -81,7 +81,7 @@ namespace Hermes.APP
             }
         }
 
-        public void HermesLogService(string totalEnviado=null, string date=null, string comportamentoServico=null)
+        public void HermesLogService( string date=null, string comportamentoServico=null)
         {
             try
             {

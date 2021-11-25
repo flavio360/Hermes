@@ -1,5 +1,7 @@
 ﻿using Hermes;
 using Hermes.APP;
+using Hermes.BLL;
+using Hermes.BLL.Utilidades;
 using Hermes.DAO.SSManager;
 using Hermes.DAO.SSManagerNew.Track;
 using Hermes.DAO.Track.AirLink;
@@ -71,6 +73,12 @@ namespace Teste
 
 
 
+        }
+
+        private void btnSplit_Click(object sender, EventArgs e)
+        {
+             var ftt = new ServiceControlExecutation();
+            ftt.ValidadtionHourExec("1|2|9|4|5|9");
         }
     }
 }

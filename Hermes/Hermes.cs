@@ -1,4 +1,5 @@
 ﻿using Hermes.APP;
+using Hermes.BLL;
 using Hermes.BLL.Utilidades;
 using Hermes.DAO;
 using Hermes.DTO.API;
@@ -14,7 +15,7 @@ namespace Hermes
 {
     public partial class Hermes : ServiceBase
     {
-        private int minutosSleep = 15;
+        private int minutosSleep = 25;
         Timer timer = new Timer();
         public Hermes()
         {            
@@ -28,8 +29,10 @@ namespace Hermes
             {
                 RecordLog log = new RecordLog();
                 bool exec = false;
+                string paramExec = "|6|12|18|00|";
 
-                exec = TrataString.VerificarHoraExecucao();
+                var p = new ServiceControlExecutation();
+                exec = p.ValidadtionHourExec(paramExec);
 
                 try
                 {                  
@@ -38,10 +41,8 @@ namespace Hermes
                         var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
                         var statusExec = "ciclo EXECUTADO ! ";
 
-                        //EventLog.WriteEntry(statusExec, EventLogEntryType.Information);
-
                         //Grava o ciclo de execução
-                        log.HermesLogService(string.Empty, date, statusExec);
+                        log.HermesLogService( date, statusExec);
 
                         //serviço de envio dos pedidos irlink para Interlog
                         InicioServico();
@@ -60,7 +61,7 @@ namespace Hermes
                         var statusExec = "ciclo NÃO EXECUTADO " ;
 
                         //Grava o ciclo de execução
-                        log.HermesLogService(string.Empty, date, statusExec);
+                        log.HermesLogService( date, statusExec);
 
                         //tempo que a Thead fica pausada até a próxima execução.
 

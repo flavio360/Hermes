@@ -13,6 +13,8 @@ InstallUtil.exe C:\Hermes\Hermes\\bin\Release\Hermes.exe
 
 TASKKILL /f /IM Hermes.exe
 
+TASKKILL /f /IM HermesTrack.exe
+
 
 ------------DESINSTALAR O SERVIÇO HERMES
 

@@ -42,7 +42,6 @@ namespace Hermes.DTO.API
                 using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))
                 {
                     db.Open();
-
                    
                     IEnumerable retorno  = db.Query<Order>(query);
 
@@ -79,7 +78,7 @@ namespace Hermes.DTO.API
                             Mao_propria = "0",
                             Nomemaopropria = string.Empty,
                             Seguro = "0",
-                            Com_ar = "1",
+                            Com_ar = "0",
                             Nrnota = string.Empty,
                             Pedido = item.Pedido,
                             Vlrentrega = item.Vlrentrega,
