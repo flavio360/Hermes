@@ -117,11 +117,18 @@ namespace Hermes.DTO.API
         [JsonPropertyName("MAWB/Master")]
         public string MAWB { get; set; }
 
+
         [JsonPropertyName("Cód. NCM")]
         public string CodNCM { get; set; }
 
         [JsonPropertyName("incoterms")]
         public string Incoterms { get; set; }
+
+        [JsonPropertyName("odentregacliente")]
+        public string Codentregacliente { get; set; }
+
+        [JsonPropertyName("codgrupoproduto")]
+        public string Codgrupoproduto { get; set; }
 
     }
 }

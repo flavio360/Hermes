@@ -1,5 +1,7 @@
 ﻿using Hermes;
 using Hermes.APP;
+using Hermes.BLL;
+using Hermes.BLL.Utilidades;
 using Hermes.DAO.SSManager;
 using Hermes.DAO.SSManagerNew.Track;
 using Hermes.DAO.Track.AirLink;
@@ -14,6 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Teste
 {
@@ -44,16 +47,16 @@ namespace Teste
             //2 faz insert dos itens que dewvem ser enviados na pedidomsetre, só deve fazer insert uma vez . 
             b.InsertPedidomestre(obj);
 
-            ////3 recupera o que foi gravado
+            //3 recupera o que foi gravado
             List<Pedidomestre> pedidomestres = b.SelectPedidomestre(obj);
 
-            ////4 Grava os trackins na airlink
+            //4 Registra na ssmanager tudo que foi gravado na pedidomestre da airlink
             c.InsertCheckpointSended(pedidomestres);
 
             //5 recupera os efetivamente os tracking disponiveis
             var objtrk = a.SelectTracking();
 
-            ////6 grava na base airlink os tracking dos pedidos
+            //6 grava na base airlink os tracking dos pedidos
             d.InsertCheckpoint_airlink(objtrk);
 
             //7 grava os pedidos enviados 
@@ -70,6 +73,12 @@ namespace Teste
 
 
 
+        }
+
+        private void btnSplit_Click(object sender, EventArgs e)
+        {
+             var ftt = new ServiceControlExecutation();
+            ftt.ValidadtionHourExec("1|2|9|4|5|9");
         }
     }
 }

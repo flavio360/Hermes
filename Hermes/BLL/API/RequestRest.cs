@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Hermes.BLL.API;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,7 @@ namespace Hermes.DTO.API
     {
         public static string statusCode;
         public static string msgRet;
-        private static string urlBase = @"https://www.sicloweb.com.br/api/v1/delivery/add";
-        private static string token = "3806734b256c27e41ec2c6bffa26d9e7";
+
         private RestClient cliente;
         private RestRequest requisicao;
 
@@ -85,12 +85,12 @@ namespace Hermes.DTO.API
             OrderResponse objretorno;
 
 
-            var client = new RestClient(urlBase);
+            var client = new RestClient(InterLogConfig.urlBase);
             client.Timeout = -1;
             var request = new RestRequest(Method.POST);
 
             request.AlwaysMultipartFormData = true;
-            request.AddParameter("token", token);
+            request.AddParameter("token", InterLogConfig.token);
             request.AddParameter("destinatario", body.Destinatario);
             request.AddParameter("pedido", body.Pedido);
             request.AddParameter("ceporigem", body.Ceporigem.Replace("-","").Replace(" ","").PadLeft(8,'0'));
@@ -121,10 +121,12 @@ namespace Hermes.DTO.API
             request.AddParameter("com_ar", "1");
             request.AddParameter("nrnota", "");
             request.AddParameter("Vlr_entrega", body.Vlrentrega);
-            request.AddParameter("HAWBHouse", body.HAWBHouse);
+            request.AddParameter("HAWBHouse", string.Empty);
             request.AddParameter("MAWB", body.MAWB);
             request.AddParameter("CodNCM", body.CodNCM);
             request.AddParameter("Incoterms", body.Incoterms);
+            request.AddParameter("codentregacliente", body.Pedido);
+            request.AddParameter("codgrupoproduto", InterLogConfig.codgrupoproduto);
 
             try
             {

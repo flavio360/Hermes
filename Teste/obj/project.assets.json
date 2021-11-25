@@ -253,7 +253,7 @@
         "dependencies": {
           "Dapper": "2.0.90",
           "Newtonsoft.Json": "13.0.1",
-          "Npgsql": "6.0.0",
+          "Npgsql": "5.0.11",
           "RestSharp": "106.12.0",
           "System.ComponentModel.Annotations": "5.0.0",
           "System.Text.Json": "5.0.2"
@@ -518,7 +518,7 @@
         "dependencies": {
           "Dapper": "2.0.90",
           "Newtonsoft.Json": "13.0.1",
-          "Npgsql": "6.0.0",
+          "Npgsql": "5.0.11",
           "RestSharp": "106.12.0",
           "System.ComponentModel.Annotations": "5.0.0",
           "System.Text.Json": "5.0.2"
@@ -783,7 +783,7 @@
         "dependencies": {
           "Dapper": "2.0.90",
           "Newtonsoft.Json": "13.0.1",
-          "Npgsql": "6.0.0",
+          "Npgsql": "5.0.11",
           "RestSharp": "106.12.0",
           "System.ComponentModel.Annotations": "5.0.0",
           "System.Text.Json": "5.0.2"
@@ -1048,7 +1048,7 @@
         "dependencies": {
           "Dapper": "2.0.90",
           "Newtonsoft.Json": "13.0.1",
-          "Npgsql": "6.0.0",
+          "Npgsql": "5.0.11",
           "RestSharp": "106.12.0",
           "System.ComponentModel.Annotations": "5.0.0",
           "System.Text.Json": "5.0.2"

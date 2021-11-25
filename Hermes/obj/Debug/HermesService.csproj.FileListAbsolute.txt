@@ -3,14 +3,11 @@ C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.exe
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Hermes.pdb
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Dapper.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Microsoft.Bcl.HashCode.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\Npgsql.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\RestSharp.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Buffers.dll
-C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Collections.Immutable.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.ComponentModel.Annotations.dll
-C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Diagnostics.DiagnosticSource.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Memory.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Numerics.Vectors.dll
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
@@ -22,6 +19,7 @@ C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\bin\Debug\System.Value
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\HermesService.csprojAssemblyReference.cache
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\Hermes.exe.config
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\Hermes.Hermes.resources
+C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\Hermes.HermesTrack.resources
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\Hermes.ProjectInstaller.resources
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\HermesService.csproj.GenerateResource.cache
 C:\Users\Administrator\Documents\REPOSITORY\Hermes\Hermes\obj\Debug\HermesService.csproj.CoreCompileInputs.cache

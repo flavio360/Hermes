@@ -7,6 +7,7 @@ using Npgsql;
 using System;
 using System.Data;
 using Hermes.DAO.SSManagerNew.Track;
+using Hermes.BLL.Utilidades;
 
 namespace Hermes.APP
 {
@@ -38,17 +39,18 @@ namespace Hermes.APP
             "left join CheckpointTrackingSended d on a.Id = d.CheckpointId " +
             "left join TypeCheckpoint e on a.Code = e.Code " +
             "left join  CheckpointDeXPara f on e.Id = f.CodeOrigin " +
-            "where d.CheckpointId is null and c.PedidoidAirLink is not null   order by c.Id_pedido, f.CodeDestino ";
+            "where d.CheckpointId is null and c.PedidoidAirLink is not null and b.Codigo is not null order by c.Id_pedido, f.CodeDestino ";
         #endregion
 
 
         #region Carrega os pedidos pendentes para gravar na pedidomaster da airlink
         public List<LoadTracking> LoadTrackingSS()
-        {
+        { 
             List<LoadTracking> objTrackings = new List<LoadTracking>();
             try
             {
-                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["HConnectionString"].ConnectionString))
+                // HConnectionString
+                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))
                 {
                     db.Open();
 
@@ -80,8 +82,14 @@ namespace Hermes.APP
             }
             
             catch (System.Exception ex)
-            {             
-                //RecordLog.ErrorLogRecording(ex.ToString());
+            {
+                string pathLog = @"C:\LogHermes\EnvioTrack\";
+                string sFileName = "Erro na cosnulta do tracking";
+                string sDscEx = ex.Message.ToString() + "| Tentativa de execução em : " + DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
+
+                GenericLogRecord a = new GenericLogRecord();
+
+                a.RecordLog(sDscEx, pathLog, sFileName);
             }
 
             return objTrackings;
@@ -93,7 +101,7 @@ namespace Hermes.APP
             List<SendTrack> objTrackings = new List<SendTrack>();
             try
             {
-                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["HConnectionString"].ConnectionString))
+                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))
                 {
                     db.Open();
 

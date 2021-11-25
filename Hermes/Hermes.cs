@@ -1,23 +1,21 @@
-﻿using System;
+﻿using Hermes.APP;
+using Hermes.BLL;
+using Hermes.BLL.Utilidades;
+using Hermes.DAO;
+using Hermes.DTO.API;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.ServiceProcess;
-using System.Timers;
-using Hermes.APP;
-using Hermes.DTO.API;
-using Hermes.DAO;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Timer = System.Timers.Timer;
 using System.Threading;
+using System.Timers;
+using Timer = System.Timers.Timer;
 
 namespace Hermes
 {
     public partial class Hermes : ServiceBase
     {
-        private int minutosSleep = 15;
+        private int minutosSleep = 25;
         Timer timer = new Timer();
         public Hermes()
         {            
@@ -31,8 +29,10 @@ namespace Hermes
             {
                 RecordLog log = new RecordLog();
                 bool exec = false;
+                string paramExec = "|6|12|18|00|";
 
-                exec = VerificarHoraExecucao();
+                var p = new ServiceControlExecutation();
+                exec = p.ValidadtionHourExec(paramExec);
 
                 try
                 {                  
@@ -41,10 +41,8 @@ namespace Hermes
                         var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
                         var statusExec = "ciclo EXECUTADO ! ";
 
-                        //EventLog.WriteEntry(statusExec, EventLogEntryType.Information);
-
                         //Grava o ciclo de execução
-                        log.HermesLogService(string.Empty, date, statusExec);
+                        log.HermesLogService( date, statusExec);
 
                         //serviço de envio dos pedidos irlink para Interlog
                         InicioServico();
@@ -63,7 +61,7 @@ namespace Hermes
                         var statusExec = "ciclo NÃO EXECUTADO " ;
 
                         //Grava o ciclo de execução
-                        log.HermesLogService(string.Empty, date, statusExec);
+                        log.HermesLogService( date, statusExec);
 
                         //tempo que a Thead fica pausada até a próxima execução.
 
@@ -75,9 +73,7 @@ namespace Hermes
                 {
                     throw ex;
                 }
-            }
-            
-            
+            }  
         }
         protected override void OnStop()
         {
@@ -104,21 +100,6 @@ namespace Hermes
             {
                 return;
             }        
-        }
-
-        public bool VerificarHoraExecucao()
-        {
-            bool exec = false;
-
-                //var t_exec = DateTime.Now.AddHours(-3).Hour.ToString();
-                var t_exec = DateTime.Now.AddHours(-3).ToString("HH");
-
-                if (t_exec == "06"|| t_exec == "12"|| t_exec == "18"|| t_exec == "00" || t_exec == "08")
-                {
-                    exec = true; 
-                }
-
-            return exec;
         }
 
         public void StartDebug(string[] args)

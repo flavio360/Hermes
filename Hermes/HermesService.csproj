@@ -62,32 +62,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\API\Interlog\InterLogConfig.cs" />
     <Compile Include="BLL\API\RequestRest.cs" />
     <Compile Include="BLL\API\Interlog\Order.cs" />
     <Compile Include="BLL\API\Interlog\OrderResponse.cs" />
+    <Compile Include="BLL\SendTrack\Tracking.cs" />
+    <Compile Include="BLL\ServiceControlExecutation.cs" />
+    <Compile Include="BLL\Utilidades\GenericLogRecord.cs" />
+    <Compile Include="BLL\Utilidades\TrataString.cs" />
     <Compile Include="DAO\SSManagerNew\Orders\LoadOrdersDAO.cs" />
     <Compile Include="BLL\API\Interlog\Authentication.cs" />
     <Compile Include="BLL\SendOrders\SendOrder.cs" />
-    <Compile Include="DAO\SSManagerNew\Track\CheckpointSended.cs" />
-    <Compile Include="DAO\SSManagerNew\Track\CheckpointSendedDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\CheckpointSended.cs" />
+    <Compile Include="DAO\SSManagerNew\CheckpointSendedDAO.cs" />
     <Compile Include="DAO\Airlinkexpress\AirlinkSelect.cs" />
     <Compile Include="DAO\Airlinkexpress\Checkpoint_airlink.cs" />
     <Compile Include="DAO\Airlinkexpress\Checkpoint_airlinkDAO.cs" />
     <Compile Include="DAO\Airlinkexpress\Pedidomestre.cs" />
     <Compile Include="DAO\Airlinkexpress\PedidomestreDAO.cs" />
-    <Compile Include="DAO\SSManagerNew\Track\CheckpointTrackingSended.cs" />
-    <Compile Include="DAO\SSManagerNew\Track\CheckpointTrackingSendedDAO.cs" />
-    <Compile Include="DAO\SSManagerNew\Track\LoadTracking.cs" />
+    <Compile Include="DAO\SSManagerNew\CheckpointTrackingSended.cs" />
+    <Compile Include="DAO\SSManagerNew\CheckpointTrackingSendedDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\LoadTracking.cs" />
     <Compile Include="BLL\SendOrders\RecordLog.cs" />
-    <Compile Include="DAO\SSManagerNew\Track\LoadTrackingDAO.cs" />
-    <Compile Include="DAO\SSManagerNew\Track\SendTrack.cs" />
-    <Compile Include="DAO\Utilidades\ConnString.cs" />
-    <Compile Include="DAO\Utilidades\RemoveUltimoCaractere.cs" />
+    <Compile Include="DAO\SSManagerNew\LoadTrackingDAO.cs" />
+    <Compile Include="DAO\SSManagerNew\SendTrack.cs" />
+    <Compile Include="DAO\ConnString.cs" />
     <Compile Include="Hermes.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Hermes.Designer.cs">
       <DependentUpon>Hermes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HermesTrack.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HermesTrack.Designer.cs">
+      <DependentUpon>HermesTrack.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectInstaller.cs">
@@ -104,6 +114,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Hermes.resx">
       <DependentUpon>Hermes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HermesTrack.resx">
+      <DependentUpon>HermesTrack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
@@ -129,7 +142,7 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="Npgsql">
-      <Version>6.0.0</Version>
+      <Version>5.0.11</Version>
     </PackageReference>
     <PackageReference Include="RestSharp">
       <Version>106.12.0</Version>

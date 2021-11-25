@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Hermes.BLL.Utilidades;
 using Hermes.DAO.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,9 @@ namespace Hermes.DAO.SSManagerNew.Track
 
                 }
 
-                queryInsert = RemoveUltimoCaractere.RemoveUltimoCaractereString(queryInsert);
+                queryInsert = TrataString.RemoveUltimoCaractereString(queryInsert);
 
-                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["HConnectionString"].ConnectionString))
+                using (SqlConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["ASPNETConnectionString"].ConnectionString))
                 {
                     db.Open();
 
