@@ -20,3 +20,5 @@ TASKKILL /f /IM HermesTrack.exe
 
 
 Sc delete Hermes
+
+Sc delete HermesTrack

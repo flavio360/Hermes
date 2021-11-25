@@ -66,6 +66,7 @@
     <Compile Include="BLL\API\RequestRest.cs" />
     <Compile Include="BLL\API\Interlog\Order.cs" />
     <Compile Include="BLL\API\Interlog\OrderResponse.cs" />
+    <Compile Include="BLL\SendOrders\ProcessOrders.cs" />
     <Compile Include="BLL\SendTrack\Tracking.cs" />
     <Compile Include="BLL\ServiceControlExecutation.cs" />
     <Compile Include="BLL\Utilidades\GenericLogRecord.cs" />

@@ -11,12 +11,12 @@ namespace Hermes
             {
 
                 //DEBUG ENVIO TRACK PARA AIRLINK
-                HermesTrack Hservice = new HermesTrack();
-                Hservice.StartDebugTrack(new string[2]);
+                //HermesTrack Hservice = new HermesTrack();
+                //Hservice.StartDebugTrack(new string[2]);
 
                 //DEBUG ENVIO DE PEDIDOS PARA INTERLOG
-                //Hermes service = new Hermes();
-                //service.StartDebug(new string[2]);
+                Hermes service = new Hermes();
+                service.StartDebug(new string[2]);
 
                 System.Threading.Thread.Sleep(System.Threading.Timeout.Infinite);
             }

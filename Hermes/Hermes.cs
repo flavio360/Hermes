@@ -1,5 +1,6 @@
 ﻿using Hermes.APP;
 using Hermes.BLL;
+using Hermes.BLL.SendOrders;
 using Hermes.BLL.Utilidades;
 using Hermes.DAO;
 using Hermes.DTO.API;
@@ -15,8 +16,6 @@ namespace Hermes
 {
     public partial class Hermes : ServiceBase
     {
-        private int minutosSleep = 25;
-        Timer timer = new Timer();
         public Hermes()
         {            
             InitializeComponent();
@@ -24,83 +23,95 @@ namespace Hermes
         
         protected override void OnStart(string[] args)
         {
-            //valida a hora de execução do serviço. 
-            while (true)
+
+            try
             {
-                RecordLog log = new RecordLog();
-                bool exec = false;
-                string paramExec = "|6|12|18|00|";
+                ProcessOrders.ProcessOrdersSS();
+            }
+            catch (Exception)
+            {
 
-                var p = new ServiceControlExecutation();
-                exec = p.ValidadtionHourExec(paramExec);
+                throw;
+            }
+            #region antigo
+            //valida a hora de execução do serviço. 
+            //while (true)
+            //{
+            //    RecordLog log = new RecordLog();
+            //    bool exec = false;
+            //    string paramExec = "|6|12|18|00|"; //horários de execução
 
-                try
-                {                  
-                    if (exec == true)
-                    { 
-                        var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
-                        var statusExec = "ciclo EXECUTADO ! ";
+            //    var p = new ServiceControlExecutation();
+            //    exec = p.ValidadtionHourExec(paramExec);
 
-                        //Grava o ciclo de execução
-                        log.HermesLogService( date, statusExec);
+            //    try
+            //    {                  
+            //        if (exec == true)
+            //        { 
+            //            var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
+            //            var statusExec = "ciclo EXECUTADO ! ";
 
-                        //serviço de envio dos pedidos irlink para Interlog
-                        InicioServico();
+            //            //Grava o ciclo de execução
+            //            log.HermesLogService( date, statusExec);
 
-                        Thread.Sleep(minutosSleep * 60 * 1000);
+            //            //serviço de envio dos pedidos irlink para Interlog
+            //            InicioServico();
 
-                        timer.Elapsed += new ElapsedEventHandler(OnElapsedTime);
-                        //timer.Interval = 5000; //number in milisecinds  
-                        timer.Interval = (minutosSleep * 60 * 1000);
-                        timer.Enabled = true;
-                        exec = false;
-                    }
-                    else
-                    {                        
-                        var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
-                        var statusExec = "ciclo NÃO EXECUTADO " ;
+            //            Thread.Sleep(minutosSleep * 60 * 1000);
 
-                        //Grava o ciclo de execução
-                        log.HermesLogService( date, statusExec);
 
-                        //tempo que a Thead fica pausada até a próxima execução.
+            //            //timer.Interval = 5000; //number in milisecinds  
+            //            timer.Interval = (minutosSleep * 60 * 1000);
+            //            timer.Enabled = true;
+            //            exec = false;
+            //        }
+            //        else
+            //        {                        
+            //            var date = DateTime.Now.AddHours(-3).ToString("yyyy-MM-dd HH:mm");
+            //            var statusExec = "ciclo NÃO EXECUTADO " ;
 
-                        Thread.Sleep(minutosSleep * 60 * 1000);
-                    }
-                }
+            //            //Grava o ciclo de execução
+            //            log.HermesLogService( date, statusExec);
 
-                catch (Exception ex)
-                {
-                    throw ex;
-                }
-            }  
+            //            //tempo que a Thead fica pausada até a próxima execução.
+
+            //            Thread.Sleep(minutosSleep * 60 * 1000);
+            //        }
+            //    }
+
+            //    catch (Exception ex)
+            //    {
+            //        throw ex;
+            //    }
+            //}  
+            #endregion
         }
         protected override void OnStop()
         {
-            string parada = "Serviço parado em: " + DateTime.Now.ToString();
-            EventLog.WriteEntry(parada, EventLogEntryType.Information);
+            //string parada = "Serviço parado em: " + DateTime.Now.ToString();
+            //EventLog.WriteEntry(parada, EventLogEntryType.Information);
         }
 
-        private void OnElapsedTime(object source, ElapsedEventArgs e)
-        {
-            string parada = "Tempo Decorrido em: " + DateTime.Now.ToString();
-            EventLog.WriteEntry(parada, EventLogEntryType.Information);
-        }
+        //private void OnElapsedTime(object source, ElapsedEventArgs e)
+        //{
+        //    string parada = "Tempo Decorrido em: " + DateTime.Now.ToString();
+        //    EventLog.WriteEntry(parada, EventLogEntryType.Information);
+        //}
 
-        public void InicioServico()
-        {
-            List<Order> OrdersPost = new List<Order>();
-            OrdersPost = LoadOrders.LoadOrdersSend();
+        //public void InicioServico()
+        //{
+        //    List<Order> OrdersPost = new List<Order>();
+        //    OrdersPost = LoadOrders.LoadOrdersSend();
 
-            if (OrdersPost.Count>0)
-            {
-                SendOrder.SendOrders(OrdersPost);
-            }
-            else
-            {
-                return;
-            }        
-        }
+        //    if (OrdersPost.Count>0)
+        //    {
+        //        SendOrder.SendOrders(OrdersPost);
+        //    }
+        //    else
+        //    {
+        //        return;
+        //    }        
+        //}
 
         public void StartDebug(string[] args)
         {
