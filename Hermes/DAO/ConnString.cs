@@ -8,7 +8,7 @@ namespace Hermes.DAO.Utilidades
 {
     public  static class ConnString
     {
-        private static string _connString = "Server=localhost;Port=5432;User Id=postgres;Password=adm#56@dba;Database=airlinkexpress";
+        private static string _connString = "Server=localhost;Port=5432;User Id=postgres;Password=;Database=";
 
         public static string ConnStringa
         {                
